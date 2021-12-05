@@ -1,0 +1,26 @@
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Employee ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Sirname</th>
+            <th scope="col">Designation</th>
+            <th scope="col">Access Card Status</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of list; let i = index;">
+            <td>{{item.emp_id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.sname}}</td>
+            <td>{{item.designation}}</td>
+            <td [ngClass]="item.access_status == 'Active' ? 'green' : 'red'">{{item.access_status}}</td>
+            <td>
+                <div class="form-check form-switch" [ngClass]="{'disabled': item.designation == 'Manager'}" (click)="changeStatus(i, item.access_status)">
+                    <input class="form-check-input cp" type="checkbox" id="flexSwitchCheckChecked" checked>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
